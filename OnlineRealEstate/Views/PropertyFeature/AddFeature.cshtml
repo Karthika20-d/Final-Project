@@ -1,0 +1,56 @@
+﻿@model OnlineRealEstate.Models.PropertyFeatureModel
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PropertyFeature</title>
+</head>
+<body>
+    <div>
+
+
+        @using (Html.BeginForm("AddPropertyValue", "PropertyFeature", FormMethod.Post))
+        {
+
+            <table>
+                @*<tr>
+                        Your property Id is
+                        @{string id = Convert.ToString(ViewBag.propertyId); }
+                        <td>@Html.Label(id)</td>
+                    </tr>*@
+                <tr>
+                    <th>Property Features</th>
+                    <th>Values</th>
+                    <th>@Html.HiddenFor(Model => Model.PropertyId)</th>
+
+
+                </tr>
+                <tr>
+                </tr>
+                @foreach (var item in ViewBag.propertyFeature)
+                {
+                    <tr>
+                        <td>@item.PropertyFeature</td>
+                        <th>@Html.ValueFor(Model => Model.PropertyFeatures.PropertyFeatureId)</th>
+                        <td> @Html.TextBoxFor(Model => Model.Value)</td>>
+                    </tr>
+                }
+                <tr>
+                    <td>
+
+                        <input type="submit" id="=submit" />
+                    </td>
+                </tr>
+
+            </table>
+
+
+        }
+    </div>
+</body>
+</html>
+

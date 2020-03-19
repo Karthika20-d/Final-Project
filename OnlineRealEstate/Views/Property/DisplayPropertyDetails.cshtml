@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OnlineRealEstate.Models.PropertyModel>
+
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <style>
+           table, td, th {  
+  border: 1px solid black;
+  text-align: left;
+  font-family:Arial;
+
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+   text-align:left;
+    
+}
+
+th, td {
+  padding: 15px;
+
+
+}
+tr:hover{
+    background-color:beige;
+
+
+}
+        </style>
+        <title>DisplayPropertyDetails</title>
+    </head>
+    <body><br /><br /><br />
+       
+       @using(Html.BeginForm("DisplayPropertyDetails", "Property", FormMethod.Get))
+       {
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Register new property", "Create")
+                    </td>
+                </tr>
+                <tr>
+                    <th>Property Type</th>
+                    <th>Location</th>
+                    <th> Area(in sq.ft)</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                @foreach (OnlineRealEstate.Entity.Property item in (List<OnlineRealEstate.Entity.Property>)TempData["Property"])
+                {
+            <tr>
+                <td>@item.PropertyType.Type</td>
+                <td>@item.Location</td>
+                <td>@item.Price</td>
+                <td>@item.Area</td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PropertyId })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PropertyId })
+                </td>
+
+
+            </tr>
+                }
+            </table>
+
+        </div>
+        }
+        <div>
+        </div>
+    </body>
+</html>
