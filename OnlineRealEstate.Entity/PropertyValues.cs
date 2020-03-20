@@ -9,7 +9,7 @@ namespace OnlineRealEstate.Entity
         public int PropertyId { get; set; }
         public Property Property { get; set; }
         public int PropertyFeatureId { get; set; }
-        public ICollection<PropertyFeature> PropertyFeatures { get; set; }
+        public PropertyFeature PropertyFeatures { get; set; }
         [Required]
         public int Value { get; set; }
 

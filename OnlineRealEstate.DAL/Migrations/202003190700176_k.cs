@@ -36,7 +36,7 @@
                     {
                         PropertyFeatureId = c.Int(nullable: false, identity: true),
                         PropertyTypeID = c.Int(nullable: false),
-                        PropertyFeature = c.String(nullable: false),
+                        PropertyFeatureName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.PropertyFeatureId)
                 .ForeignKey("dbo.PropertyTypes", t => t.PropertyTypeID)

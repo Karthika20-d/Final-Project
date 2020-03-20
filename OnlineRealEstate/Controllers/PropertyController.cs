@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System;
 namespace OnlineRealEstate.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class PropertyController : Controller
     {
         PropertyBL propertyBL = new PropertyBL();

@@ -14,12 +14,11 @@ namespace OnlineRealEstate.Controllers
         public ActionResult AddFeature()
         {
             Property property = TempData["TypeId"] as Property;
-            ICollection<PropertyFeature> propertyFeatures= propertyBL.GetFeature(property.PropertyTypeID);
+            List<PropertyFeature> propertyFeatures= propertyBL.GetFeature(property.PropertyTypeID);
             //ArrayList featureId = new ArrayList();
             PropertyFeatureModel model = new PropertyFeatureModel();
             ViewBag.propertyFeature = propertyFeatures;
             model.PropertyId = property.PropertyId;
-            model.PropertyFeatures = propertyFeatures;
             return this.View(model);
         }
        // [HttpPost]

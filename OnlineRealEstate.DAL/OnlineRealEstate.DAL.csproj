@@ -77,17 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202003181048598_k.cs" />
-    <Compile Include="Migrations\202003181048598_k.designer.cs">
-      <DependentUpon>202003181048598_k.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003181417315_a.cs" />
-    <Compile Include="Migrations\202003181417315_a.designer.cs">
-      <DependentUpon>202003181417315_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003181540331_b.cs" />
-    <Compile Include="Migrations\202003181540331_b.designer.cs">
-      <DependentUpon>202003181540331_b.cs</DependentUpon>
+    <Compile Include="Migrations\202003190700176_k.cs" />
+    <Compile Include="Migrations\202003190700176_k.designer.cs">
+      <DependentUpon>202003190700176_k.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PropertyContext.cs" />
@@ -106,14 +98,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003181048598_k.resx">
-      <DependentUpon>202003181048598_k.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003181417315_a.resx">
-      <DependentUpon>202003181417315_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003181540331_b.resx">
-      <DependentUpon>202003181540331_b.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003190700176_k.resx">
+      <DependentUpon>202003190700176_k.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

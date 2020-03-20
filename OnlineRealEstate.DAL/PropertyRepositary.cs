@@ -71,7 +71,7 @@ namespace OnlineRealEstate.DAL
                 return propertyContext.PropertyType.ToList();
             }
         }
-        public ICollection<PropertyFeature> GetFeature(int typeId)
+        public List<PropertyFeature> GetFeature(int typeId)
         {
             using(PropertyContext propertyContext=new PropertyContext())
             {
@@ -101,6 +101,7 @@ namespace OnlineRealEstate.DAL
                 {
                     propertyValues.Value = value;
                     propertyValues.PropertyFeatureId = PropertyFeature[index];
+                    index++;
                     propertyContext.PropertyValues.Add(propertyValues);
                     propertyContext.SaveChanges();
                 }

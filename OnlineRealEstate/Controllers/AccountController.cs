@@ -2,7 +2,9 @@
 using OnlineRealEstate.Entity;
 using OnlineRealEstate.Models;
 using System;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace OnlineRealEstate.Controllers
 {
@@ -38,6 +40,12 @@ namespace OnlineRealEstate.Controllers
             return View();
         }
         [HttpPost]
+        public ActionResult LogOut()
+        {
+             FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+        [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
             User user = new User();
@@ -46,18 +54,33 @@ namespace OnlineRealEstate.Controllers
             {
                 user.Email = loginModel.Email;
                 user.Password = loginModel.Password;
-                if (userBL.Login(user)=="Admin")
+                if (user != null)
                 {
-                    return RedirectToAction("DisplayPropertyDetails","Property");
+                    FormsAuthentication.SetAuthCookie(loginModel.Email, false);
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.Role);
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie);
+                    return RedirectToAction("Index", "Home");
                 }
-                else if(userBL.Login(user) == "Buyer")
-                {
-                    ViewBag.Message = "Login successfull";
-                }
+
                 else
                 {
-                    ViewBag.Message = "Login failed";
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(loginModel);
                 }
+                //if (userBL.Login(user)=="Admin")
+                //{
+                //    return RedirectToAction("DisplayPropertyDetails","Property");
+                //}
+                //else if(userBL.Login(user) == "Buyer")
+                //{
+                //    ViewBag.Message = "Login successfull";
+                //}
+                //else
+                //{
+                //    ViewBag.Message = "Login failed";
+                //}
             }
             return View();
         }

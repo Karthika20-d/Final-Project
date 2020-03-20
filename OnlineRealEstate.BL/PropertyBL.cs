@@ -32,7 +32,7 @@ namespace OnlineRealEstate.BL
         {
             return propertyRepositary.GetPropertyType();
         }
-        public ICollection<PropertyFeature> GetFeature(int typeId)
+        public List<PropertyFeature> GetFeature(int typeId)
         {
             return propertyRepositary.GetFeature(typeId);
         }

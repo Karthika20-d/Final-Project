@@ -34,8 +34,8 @@
                 @foreach (var item in ViewBag.propertyFeature)
                 {
                     <tr>
-                        <td>@item.PropertyFeature</td>
-                        <th>@Html.ValueFor(Model => Model.PropertyFeatures.PropertyFeatureId)</th>
+                        <td>@item.PropertyFeatureName</td>
+                        <td>@Html.HiddenFor(Model  => Model.PropertyFeatureId,new {@Value=item.PropertyFeatureId })</td>
                         <td> @Html.TextBoxFor(Model => Model.Value)</td>>
                     </tr>
                 }
